@@ -22,14 +22,39 @@ repositories {
 }
 
 dependencies {
+	// JPA - Postgres
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-websocket")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
+
+	// MongoDB
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+	// Lombok
+	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+
+	// Security
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
+	// Web
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
+	// Validation
+	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.1")
+
+	// Websocket
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
+
+	// Devtools
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	// JetBrains Annotations
+	implementation("org.jetbrains:annotations:24.1.0")
+
+	// Documentation
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+
+	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 }
