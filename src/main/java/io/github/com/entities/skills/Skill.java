@@ -25,6 +25,5 @@ public class Skill {
 	Double health;
 	Boolean backpack;
 	Double movementSpeed;
-	Set<Job> jobs = new HashSet<>();
+	Set<String> jobs = new HashSet<>();
 }
-

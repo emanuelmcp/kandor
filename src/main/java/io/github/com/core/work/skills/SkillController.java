@@ -3,6 +3,7 @@ package io.github.com.core.work.skills;
 import io.github.com.common.dto.output.StringIdResponseDTO;
 import io.github.com.core.work.skills.dto.input.CreateSkillDTO;
 import io.github.com.core.work.skills.dto.output.SkillDTO;
+import io.github.com.core.work.skills.services.SkillJobService;
 import io.github.com.core.work.skills.services.SkillService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,15 @@ import java.util.List;
 @RequestMapping("/skills")
 public class SkillController {
 	private final SkillService skillService;
+	private final SkillJobService skillJobService;
 
 	@Autowired
-	public SkillController(SkillService skillService) {
+	public SkillController(SkillService skillService, SkillJobService skillJobService) {
 		this.skillService = skillService;
+		this.skillJobService = skillJobService;
 	}
 
-	@PostMapping	@Operation(operationId = "create")
+	@PostMapping
 	public ResponseEntity<StringIdResponseDTO> createSkill(@RequestBody CreateSkillDTO dto) {
 		return ResponseEntity.ok(skillService.create(dto));
 	}
@@ -50,5 +53,25 @@ public class SkillController {
 	@DeleteMapping("/name/{skillName}")
 	public void deleteSkillByName(@PathVariable String skillName) {
 		skillService.findByName(skillName);
+	}
+
+	@PutMapping("/{skillId}/job/{jobId}")
+	public ResponseEntity<StringIdResponseDTO> addJobToSkillById(@PathVariable String skillId, String jobId) {
+		return ResponseEntity.ok(skillJobService.addJobById(skillId, jobId));
+	}
+
+	@PutMapping("/{skillName}/job/{jobName}/name")
+	public ResponseEntity<StringIdResponseDTO> addJobToSkillByName(@PathVariable String skillName, String jobName) {
+		return ResponseEntity.ok(skillJobService.addJobByName(skillName, jobName));
+	}
+
+	@DeleteMapping("/{skillId}/job/{jobId}")
+	public void deleteJobToSkillById(@PathVariable String skillId, String jobId) {
+		skillJobService.deleteJobById(skillId, jobId);
+	}
+
+	@DeleteMapping("/{skillName}/job/{jobName}/name")
+	public void deleteJobToSkillByName(@PathVariable String skillName, String jobName) {
+		skillJobService.deleteJobByName(skillName, jobName);
 	}
 }
