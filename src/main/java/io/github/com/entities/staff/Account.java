@@ -26,9 +26,11 @@ public class Account {
 
     // Relations
     @OneToMany(mappedBy = "account")
+    @Builder.Default
     Set<AccountGroup> accountGroups = new HashSet<>();
 
     @OneToMany(mappedBy = "account")
+    @Builder.Default
     Set<AccountPermission> accountPermissions = new HashSet<>();
 
     // Register auditor

@@ -33,9 +33,11 @@ public class Group {
     String suffix;
 
     @OneToMany(mappedBy = "group")
+    @Builder.Default
     Set<AccountGroup> accountGroups = new HashSet<>();
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.REMOVE)
+    @Builder.Default
     Set<GroupPermission> groupPermissions = new HashSet<>();
 
     @Embedded
