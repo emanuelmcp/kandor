@@ -102,7 +102,7 @@ public class GroupServiceImpl implements GroupService {
         Group updatedGroup = groupRepository.save(group);
         return new IntegerIdResponseDTO(
                 group.getId(),
-                "El grupo " + group.getName() + " ha sido actualizado"
+                "El grupo " + updatedGroup.getName() + " ha sido actualizado"
         );
     }
 
@@ -114,7 +114,7 @@ public class GroupServiceImpl implements GroupService {
         Group updatedGroup = groupRepository.save(group);
         return new IntegerIdResponseDTO(
                 group.getId(),
-                "El grupo " + group.getName() + " ha sido actualizado"
+                "El grupo " + updatedGroup.getName() + " ha sido actualizado"
         );
     }
 

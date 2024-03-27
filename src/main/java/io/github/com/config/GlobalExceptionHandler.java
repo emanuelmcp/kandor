@@ -66,6 +66,17 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(EntityUpdateException.class)
+    public ResponseEntity<ErrorDTO> handleEntityUpdateException(@NotNull EntityUpdateException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(
+            ErrorDTO
+                .builder()
+                .message(e.getMessage())
+                .date(DateUtil.getZuluDate())
+                .build()
+        );
+    }
+
 
     // Internal exceptions
     @ExceptionHandler(MethodArgumentNotValidException.class)

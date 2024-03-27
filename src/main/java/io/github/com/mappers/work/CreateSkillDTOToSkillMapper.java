@@ -1,4 +1,4 @@
-package io.github.com.services.interfaces;
+package io.github.com.mappers.work;
 
 import io.github.com.dto.work.CreateSkillDTO;
 import io.github.com.entities.skills.Skill;
