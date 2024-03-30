@@ -1,11 +1,7 @@
 package io.github.com.controllers;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
-import io.github.com.dto.staff.PermissionRelationsMetadataDTO;
-import io.github.com.dto.staff.CreateGroupDTO;
-import io.github.com.dto.staff.UpdateGroupDTO;
-import io.github.com.dto.staff.FullGroupDTO;
-import io.github.com.dto.staff.ReducedGroupDTO;
+import io.github.com.dto.common.ApiResponseDTO;
+import io.github.com.dto.staff.*;
 import io.github.com.services.interfaces.GroupPermissionService;
 import io.github.com.services.interfaces.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +25,7 @@ public class GroupController {
 
 	// CREATE
 	@PostMapping
-	public ResponseEntity<IntegerIdResponseDTO> createGroup(@RequestBody CreateGroupDTO dto) {
+	public ResponseEntity<ApiResponseDTO> createGroup(@RequestBody CreateGroupDTO dto) {
 		return ResponseEntity.ok(groupService.create(dto));
 	}
 
@@ -51,12 +47,12 @@ public class GroupController {
 
 	// Update
 	@PatchMapping("/{id}")
-	public ResponseEntity<IntegerIdResponseDTO> updateGroupById(@PathVariable Integer id, @RequestBody UpdateGroupDTO dto) {
+	public ResponseEntity<ApiResponseDTO> updateGroupById(@PathVariable Integer id, @RequestBody UpdateGroupDTO dto) {
 		return ResponseEntity.ok(groupService.updateGroupById(id, dto));
 	}
 
 	@PatchMapping("/name/{groupName}")
-	public ResponseEntity<IntegerIdResponseDTO> updateGroupByName(@PathVariable String groupName, @RequestBody UpdateGroupDTO dto) {
+	public ResponseEntity<ApiResponseDTO> updateGroupByName(@PathVariable String groupName, @RequestBody UpdateGroupDTO dto) {
 		return ResponseEntity.ok(groupService.updateGroupByName(groupName, dto));
 	}
 	@DeleteMapping("/{id}")
@@ -70,7 +66,7 @@ public class GroupController {
 	}
 
 	@PutMapping("/{idGroup}/permission/{idPermission}")
-	public ResponseEntity<IntegerIdResponseDTO> addPermissionToGroupById(
+	public ResponseEntity<ApiResponseDTO> addPermissionToGroupById(
 		@PathVariable Integer idGroup,
 		@PathVariable Integer idPermission,
 		@RequestBody PermissionRelationsMetadataDTO dto
@@ -87,7 +83,7 @@ public class GroupController {
 	}
 
 	@PutMapping("/{groupName}/permission/{permissionName}/name")
-	public ResponseEntity<IntegerIdResponseDTO> addPermissionToGroupByName(
+	public ResponseEntity<ApiResponseDTO> addPermissionToGroupByName(
 		@PathVariable String groupName,
 		@PathVariable String permissionName,
 		@RequestBody PermissionRelationsMetadataDTO dto

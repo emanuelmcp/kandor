@@ -1,6 +1,6 @@
 package io.github.com.services;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.PermissionRelationsMetadataDTO;
 import io.github.com.entities.staff.Group;
 import io.github.com.entities.staff.GroupPermission;
@@ -37,7 +37,7 @@ public class GroupPermissionServiceImpl implements GroupPermissionService {
     // TODO: OPTIMIZAR (metodo exists)!!!!
     @Override
     @Transactional
-    public IntegerIdResponseDTO addPermissionById(Integer idGroup, Integer idPermission, @NotNull PermissionRelationsMetadataDTO dto) {
+    public ApiResponseDTO addPermissionById(Integer idGroup, Integer idPermission, @NotNull PermissionRelationsMetadataDTO dto) {
         Group group = groupRepository
                 .findById(idGroup)
                 .orElseThrow(() -> new EntityAssociationException("El grupo con el id " + idGroup + " no existe"));
@@ -61,8 +61,8 @@ public class GroupPermissionServiceImpl implements GroupPermissionService {
                         .isNegated(dto.getIsNegated())
                         .expiresAt(dto.getExpiresAt())
                         .build());
-        return new IntegerIdResponseDTO(
-                group.getId(),
+        return new ApiResponseDTO(
+                group.getId().toString(),
                 "Al grupo " + group.getName() + " se le ha añadido el permiso " + permission.getName()
         );
     }
@@ -81,7 +81,7 @@ public class GroupPermissionServiceImpl implements GroupPermissionService {
 
     @Override
     @Transactional
-    public IntegerIdResponseDTO addPermissionByName(String groupName, String permissionName, @NotNull PermissionRelationsMetadataDTO dto) {
+    public ApiResponseDTO addPermissionByName(String groupName, String permissionName, @NotNull PermissionRelationsMetadataDTO dto) {
         Group group = groupRepository
                 .findByName(groupName)
                 .orElseThrow(() -> new EntityAssociationException("El grupo con el nombre " + groupName + " no existe"));
@@ -105,8 +105,8 @@ public class GroupPermissionServiceImpl implements GroupPermissionService {
                         .expiresAt(dto.getExpiresAt())
                         .build()
         );
-        return new IntegerIdResponseDTO(
-                group.getId(),
+        return new ApiResponseDTO(
+                group.getId().toString(),
                 "Al grupo " + group.getName() + " se le ha añadido el permiso " + permission.getName()
         );
     }

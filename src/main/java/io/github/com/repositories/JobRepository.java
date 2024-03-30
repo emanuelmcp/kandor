@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface JobRepository extends MongoRepository<Job, String> {
 	Optional<Job> findByName(String jobName);
+	void deleteByName(String jobName);
 }

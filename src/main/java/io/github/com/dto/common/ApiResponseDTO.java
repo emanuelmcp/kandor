@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
-public class StringIdResponseDTO implements Serializable {
+public class ApiResponseDTO implements Serializable {
     String id;
     String message;
 }

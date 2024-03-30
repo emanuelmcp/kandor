@@ -1,13 +1,13 @@
 package io.github.com.services.interfaces;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.PermissionRelationsMetadataDTO;
 
 public interface GroupPermissionService {
 
     // Create
-    IntegerIdResponseDTO addPermissionById(Integer idGroup, Integer idPermission, PermissionRelationsMetadataDTO dto);
-    IntegerIdResponseDTO addPermissionByName(String groupName, String permissionName, PermissionRelationsMetadataDTO dto);
+    ApiResponseDTO addPermissionById(Integer idGroup, Integer idPermission, PermissionRelationsMetadataDTO dto);
+    ApiResponseDTO addPermissionByName(String groupName, String permissionName, PermissionRelationsMetadataDTO dto);
 
     // Delete
     void deletePermissionById(Integer idGroup, Integer idPermission);

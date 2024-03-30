@@ -1,7 +1,6 @@
 package io.github.com.services;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
-import io.github.com.dto.common.StringIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.work.CreateSkillDTO;
 import io.github.com.dto.work.SkillDTO;
 import io.github.com.dto.work.UpdateSkillDTO;
@@ -41,13 +40,13 @@ public class SkillServiceImpl implements SkillService{
 	}
 
 	@Override
-	public StringIdResponseDTO create(@NotNull CreateSkillDTO dto) {
+	public ApiResponseDTO create(@NotNull CreateSkillDTO dto) {
 		skillRepository.findByName(dto.getName()).ifPresent((s) -> {
 			throw new EntityAlreadyExistsException("Ya existe una habilidad con el nombre: " + dto.getName());
 		});
 		Skill mappedSkill = createSkillDTOToSkillMapper.map(dto);
 		Skill savedSkill = skillRepository.save(mappedSkill);
-		return new StringIdResponseDTO(
+		return new ApiResponseDTO(
 			savedSkill.getId(),
 			"El grupo " + savedSkill.getName() + " ha sido creado"
 		);
@@ -76,28 +75,28 @@ public class SkillServiceImpl implements SkillService{
 	}
 
 	@Override
-	public StringIdResponseDTO updateById(String id, UpdateSkillDTO dto) {
+	public ApiResponseDTO updateById(String id, UpdateSkillDTO dto) {
 		Skill skill = skillRepository
 			.findById(id)
 			.orElseThrow(() -> new EntityNotFoundException("La habilidad con el id " + id + " no existe"));
 		updateSkillDTOToSkillMapper.map(dto, skill);
 		Skill updatedSkill = skillRepository.save(skill);
-		return new StringIdResponseDTO(
+		return new ApiResponseDTO(
 			skill.getId(),
-			"La habilidad " + skill.getName() + " ha sido actualizada"
+			"La habilidad " + updatedSkill.getName() + " ha sido actualizada"
 		);
 	}
 
 	@Override
-	public StringIdResponseDTO updateByName(String skillName, UpdateSkillDTO dto) {
+	public ApiResponseDTO updateByName(String skillName, UpdateSkillDTO dto) {
 		Skill skill = skillRepository
 			.findById(skillName)
 			.orElseThrow(() -> new EntityNotFoundException("La habilidad con el nombre " + skillName + " no existe"));
 		updateSkillDTOToSkillMapper.map(dto, skill);
 		Skill updatedSkill = skillRepository.save(skill);
-		return new StringIdResponseDTO(
+		return new ApiResponseDTO(
 			skill.getId(),
-			"La habilidad " + skill.getName() + " ha sido actualizada"
+			"La habilidad " + updatedSkill.getName() + " ha sido actualizada"
 		);
 	}
 

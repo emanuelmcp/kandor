@@ -1,9 +1,9 @@
 package io.github.com.services;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.CreatePermissionDTO;
-import io.github.com.dto.staff.UpdatePermissionDTO;
 import io.github.com.dto.staff.PermissionDTO;
+import io.github.com.dto.staff.UpdatePermissionDTO;
 import io.github.com.entities.staff.Permission;
 import io.github.com.exceptions.EntityAlreadyExistsException;
 import io.github.com.exceptions.EntityNotFoundException;
@@ -43,7 +43,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     @Transactional
-    public IntegerIdResponseDTO create(@NotNull CreatePermissionDTO dto) {
+    public ApiResponseDTO create(@NotNull CreatePermissionDTO dto) {
         String permissionName = dto.getName();
         permissionRepository
             .findByName(permissionName)
@@ -52,8 +52,8 @@ public class PermissionServiceImpl implements PermissionService {
             });
         Permission mappedPermission = createPermissionDtoToPermission.map(dto);
         Permission savedPermission = permissionRepository.save(mappedPermission);
-        return new IntegerIdResponseDTO(
-                savedPermission.getId(),
+        return new ApiResponseDTO(
+                savedPermission.getId().toString(),
                 "El permiso " + savedPermission.getName() + " ha sido creado"
         );
     }
@@ -85,29 +85,29 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     @Transactional
-    public IntegerIdResponseDTO updateById(Integer id, UpdatePermissionDTO dto) {
+    public ApiResponseDTO updateById(Integer id, UpdatePermissionDTO dto) {
         Permission permission = permissionRepository
                 .findById(id)
                 .orElseThrow(() -> new EntityUpdateException("El permiso con el id " + id + " no existe"));
         updatePermissionDTOToPermissionMapper.map(dto, permission);
         Permission updatedPermission = permissionRepository.save(permission);
-        return new IntegerIdResponseDTO(
-                permission.getId(),
-                "El permiso " + permission.getName() + " ha sido actualizado"
+        return new ApiResponseDTO(
+            updatedPermission.getId().toString(),
+                "El permiso " + updatedPermission.getName() + " ha sido actualizado"
         );
     }
 
     @Override
     @Transactional
-    public IntegerIdResponseDTO updateByName(String permissionName, UpdatePermissionDTO dto) {
+    public ApiResponseDTO updateByName(String permissionName, UpdatePermissionDTO dto) {
         Permission permission = permissionRepository
                 .findByName(permissionName)
                 .orElseThrow(() -> new EntityUpdateException("El permiso con el nombre " + permissionName + " no existe"));
         updatePermissionDTOToPermissionMapper.map(dto, permission);
         Permission updatedPermission = permissionRepository.save(permission);
-        return new IntegerIdResponseDTO(
-                permission.getId(),
-                "El permiso " + permission.getName() + " ha sido actualizado"
+        return new ApiResponseDTO(
+            updatedPermission.getId().toString(),
+                "El permiso " + updatedPermission.getName() + " ha sido actualizado"
         );
     }
 }

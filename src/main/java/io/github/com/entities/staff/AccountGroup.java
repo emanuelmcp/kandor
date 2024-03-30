@@ -1,5 +1,6 @@
 package io.github.com.entities.staff;
 
+import io.github.com.entities.staff.keys.AccountGroupPK;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,17 +13,15 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class AccountGroup {
-    //TODO: crear equals and hashcode
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @EmbeddedId
+    private AccountGroupPK id;
 
     @ManyToOne
     @JoinColumn(name = "uuid")
     Account account;
 
     @ManyToOne()
-    @JoinColumn(name = "id_group")
+    @JoinColumn(name = "group_id")
     Group group;
 
     @Column(name = "expires_at", columnDefinition= "TIMESTAMP WITH TIME ZONE")

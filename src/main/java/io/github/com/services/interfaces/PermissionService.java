@@ -1,15 +1,15 @@
 package io.github.com.services.interfaces;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.CreatePermissionDTO;
-import io.github.com.dto.staff.UpdatePermissionDTO;
 import io.github.com.dto.staff.PermissionDTO;
+import io.github.com.dto.staff.UpdatePermissionDTO;
 
 import java.util.List;
 
 public interface PermissionService {
     // Create
-    IntegerIdResponseDTO create(CreatePermissionDTO permission);
+    ApiResponseDTO create(CreatePermissionDTO permission);
 
     // Read
     List<PermissionDTO> findAll();
@@ -17,6 +17,6 @@ public interface PermissionService {
     PermissionDTO findByName(String permissionName);
 
     // Update
-    IntegerIdResponseDTO updateById(Integer id, UpdatePermissionDTO dto);
-    IntegerIdResponseDTO updateByName(String permissionName, UpdatePermissionDTO dto);
+    ApiResponseDTO updateById(Integer id, UpdatePermissionDTO dto);
+    ApiResponseDTO updateByName(String permissionName, UpdatePermissionDTO dto);
 }

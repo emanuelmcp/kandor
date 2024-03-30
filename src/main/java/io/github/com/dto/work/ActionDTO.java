@@ -1,10 +1,13 @@
 package io.github.com.dto.work;
 
-import io.github.com.entities.skills.Affected;
+import lombok.Builder;
+import lombok.Data;
 
-import java.util.List;
+import java.util.Set;
 
+@Data
+@Builder
 public class ActionDTO {
 	private String description;
-	private List<AffectedDTO> affected;
+	private Set<AffectedDTO> affected;
 }

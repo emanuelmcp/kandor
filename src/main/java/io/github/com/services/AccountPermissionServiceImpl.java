@@ -1,6 +1,6 @@
 package io.github.com.services;
 
-import io.github.com.dto.common.StringIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.PermissionRelationsMetadataDTO;
 import io.github.com.entities.staff.keys.AccountPermissionPK;
 import io.github.com.entities.staff.Account;
@@ -38,7 +38,7 @@ public class AccountPermissionServiceImpl implements AccountPermissionService {
 
     @Override
     @Transactional
-    public StringIdResponseDTO addPermissionToAccountById(String uuid, Integer idPermission, @NotNull PermissionRelationsMetadataDTO dto) {
+    public ApiResponseDTO addPermissionToAccountById(String uuid, Integer idPermission, @NotNull PermissionRelationsMetadataDTO dto) {
         Account account = accountRepository
                 .findById(uuid)
                 .orElseThrow(() -> new EntityAssociationException("El jugador con el uuid " + uuid + " no existe"));
@@ -61,7 +61,7 @@ public class AccountPermissionServiceImpl implements AccountPermissionService {
                         .isNegated(dto.getIsNegated())
                         .expiresAt(dto.getExpiresAt())
                         .build());
-        return new StringIdResponseDTO(
+        return new ApiResponseDTO(
                 account.getUuid(),
                 "Al jugador " + account.getNick() + " se le ha añadido el permiso " + permission.getName()
         );
@@ -81,7 +81,7 @@ public class AccountPermissionServiceImpl implements AccountPermissionService {
 
     @Override
     @Transactional
-    public StringIdResponseDTO addPermissionToAccountByNick(String nick, String permissionName, @NotNull PermissionRelationsMetadataDTO dto) {
+    public ApiResponseDTO addPermissionToAccountByNick(String nick, String permissionName, @NotNull PermissionRelationsMetadataDTO dto) {
         Account account = accountRepository
                 .findByNick(nick)
                 .orElseThrow(() -> new EntityAssociationException("El jugador con el nick " + nick + " no existe"));
@@ -105,7 +105,7 @@ public class AccountPermissionServiceImpl implements AccountPermissionService {
                         .expiresAt(dto.getExpiresAt())
                         .build()
         );
-        return new StringIdResponseDTO(
+        return new ApiResponseDTO(
                 account.getUuid(),
                 "Al jugador " + account.getNick() + " se le ha añadido el permiso " + permission.getName()
         );

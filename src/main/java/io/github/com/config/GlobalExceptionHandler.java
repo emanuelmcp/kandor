@@ -4,11 +4,13 @@ import io.github.com.dto.common.ErrorDTO;
 import io.github.com.exceptions.*;
 import io.github.com.utils.DateUtil;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -77,7 +79,6 @@ public class GlobalExceptionHandler {
         );
     }
 
-
     // Internal exceptions
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorDTO> handleMethodArgumentNotValidException(@NotNull MethodArgumentNotValidException e) {
@@ -87,6 +88,28 @@ public class GlobalExceptionHandler {
                         .message("Error de validacion")
                         .date(DateUtil.getZuluDate())
                         .build()
+        );
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ErrorDTO> handleNoResourceFoundException(@NotNull NoResourceFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(
+            ErrorDTO
+                .builder()
+                .message("No se ha podido encontrar la ruta")
+                .date(DateUtil.getZuluDate())
+                .build()
+        );
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorDTO> handleDataIntegrityViolationException(@NotNull DataIntegrityViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(
+            ErrorDTO
+                .builder()
+                .message("Error desconocido. Contacta con soporte")
+                .date(DateUtil.getZuluDate())
+                .build()
         );
     }
 }

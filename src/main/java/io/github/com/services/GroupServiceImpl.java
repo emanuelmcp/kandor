@@ -1,6 +1,6 @@
 package io.github.com.services;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.CreateGroupDTO;
 import io.github.com.dto.staff.FullGroupDTO;
 import io.github.com.dto.staff.ReducedGroupDTO;
@@ -49,7 +49,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public IntegerIdResponseDTO create(@NotNull CreateGroupDTO dto) {
+    public ApiResponseDTO create(@NotNull CreateGroupDTO dto) {
         groupRepository.findByName(dto.getName()).ifPresent(existingGroup -> {
             throw new EntityAlreadyExistsException("Este grupo ya existe");
         });
@@ -63,8 +63,8 @@ public class GroupServiceImpl implements GroupService {
         });
         Group mappedGroup = createGroupDTOToGroupMapper.map(dto);
         Group savedGroup = groupRepository.save(mappedGroup);
-        return new IntegerIdResponseDTO(
-                savedGroup.getId(),
+        return new ApiResponseDTO(
+                savedGroup.getId().toString(),
                 "El grupo " + savedGroup.getName() + " ha sido creado"
         );
     }
@@ -95,25 +95,25 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public IntegerIdResponseDTO updateGroupById(Integer id, UpdateGroupDTO dto) {
+    public ApiResponseDTO updateGroupById(Integer id, UpdateGroupDTO dto) {
         Group group = groupRepository.findById(id)
                 .orElseThrow(() -> new EntityUpdateException("El grupo con el id " + id + " no existe"));
         updateGroupDTOToGroupMapper.map(dto, group);
         Group updatedGroup = groupRepository.save(group);
-        return new IntegerIdResponseDTO(
-                group.getId(),
+        return new ApiResponseDTO(
+                group.getId().toString(),
                 "El grupo " + updatedGroup.getName() + " ha sido actualizado"
         );
     }
 
     @Override
-    public IntegerIdResponseDTO updateGroupByName(String groupName, UpdateGroupDTO dto) {
+    public ApiResponseDTO updateGroupByName(String groupName, UpdateGroupDTO dto) {
         Group group = groupRepository.findByName(groupName)
                 .orElseThrow(() -> new EntityUpdateException("El grupo con el nombre " + groupName + " no existe"));
         updateGroupDTOToGroupMapper.map(dto, group);
         Group updatedGroup = groupRepository.save(group);
-        return new IntegerIdResponseDTO(
-                group.getId(),
+        return new ApiResponseDTO(
+                group.getId().toString(),
                 "El grupo " + updatedGroup.getName() + " ha sido actualizado"
         );
     }

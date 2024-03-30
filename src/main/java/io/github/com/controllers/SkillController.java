@@ -2,7 +2,7 @@ package io.github.com.controllers;
 
 import io.github.com.dto.work.CreateSkillDTO;
 import io.github.com.dto.work.SkillDTO;
-import io.github.com.dto.common.StringIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.services.interfaces.SkillJobService;
 import io.github.com.services.interfaces.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SkillController {
 	}
 
 	@PostMapping
-	public ResponseEntity<StringIdResponseDTO> createSkill(@RequestBody CreateSkillDTO dto) {
+	public ResponseEntity<ApiResponseDTO> createSkill(@RequestBody CreateSkillDTO dto) {
 		return ResponseEntity.ok(skillService.create(dto));
 	}
 
@@ -55,22 +55,22 @@ public class SkillController {
 	}
 
 	@PutMapping("/{skillId}/job/{jobId}")
-	public ResponseEntity<StringIdResponseDTO> addJobToSkillById(@PathVariable String skillId, String jobId) {
+	public ResponseEntity<ApiResponseDTO> addJobToSkillById(@PathVariable String skillId, @PathVariable String jobId) {
 		return ResponseEntity.ok(skillJobService.addJobById(skillId, jobId));
 	}
 
 	@PutMapping("/{skillName}/job/{jobName}/name")
-	public ResponseEntity<StringIdResponseDTO> addJobToSkillByName(@PathVariable String skillName, String jobName) {
+	public ResponseEntity<ApiResponseDTO> addJobToSkillByName(@PathVariable String skillName, @PathVariable String jobName) {
 		return ResponseEntity.ok(skillJobService.addJobByName(skillName, jobName));
 	}
 
 	@DeleteMapping("/{skillId}/job/{jobId}")
-	public void deleteJobToSkillById(@PathVariable String skillId, String jobId) {
+	public void deleteJobToSkillById(@PathVariable String skillId, @PathVariable String jobId) {
 		skillJobService.deleteJobById(skillId, jobId);
 	}
 
 	@DeleteMapping("/{skillName}/job/{jobName}/name")
-	public void deleteJobToSkillByName(@PathVariable String skillName, String jobName) {
+	public void deleteJobToSkillByName(@PathVariable String skillName, @PathVariable String jobName) {
 		skillJobService.deleteJobByName(skillName, jobName);
 	}
 }

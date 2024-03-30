@@ -1,9 +1,9 @@
 package io.github.com.controllers;
 
-import io.github.com.dto.common.IntegerIdResponseDTO;
+import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.CreatePermissionDTO;
-import io.github.com.dto.staff.UpdatePermissionDTO;
 import io.github.com.dto.staff.PermissionDTO;
+import io.github.com.dto.staff.UpdatePermissionDTO;
 import io.github.com.services.interfaces.PermissionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class PermissionController {
     }
 
     @PostMapping
-    public ResponseEntity<IntegerIdResponseDTO> createPermission(@Valid @RequestBody CreatePermissionDTO dto) {
+    public ResponseEntity<ApiResponseDTO> createPermission(@Valid @RequestBody CreatePermissionDTO dto) {
         return ResponseEntity.ok(permissionService.create(dto));
     }
 
@@ -44,7 +44,7 @@ public class PermissionController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<IntegerIdResponseDTO> updatePermissionById(
+    public ResponseEntity<ApiResponseDTO> updatePermissionById(
             @PathVariable Integer id,
             @RequestBody UpdatePermissionDTO dto
     ) {
@@ -52,7 +52,7 @@ public class PermissionController {
     }
 
     @PatchMapping("/{permissionName}/name")
-    public ResponseEntity<IntegerIdResponseDTO> updatePermissionByName(
+    public ResponseEntity<ApiResponseDTO> updatePermissionByName(
             @PathVariable String permissionName,
             @RequestBody UpdatePermissionDTO dto
     ) {
