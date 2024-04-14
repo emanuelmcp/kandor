@@ -15,10 +15,10 @@ import java.util.Objects;
 @NoArgsConstructor
 @Embeddable
 public class AccountGroupPK {
-	@Column(name = "uuid")
+	@Column(name = "uuid", nullable = false)
 	String uuid;
 
-	@Column(name = "group_id")
+	@Column(name = "group_id",  nullable = false)
 	Integer groupId;
 
 	@Override

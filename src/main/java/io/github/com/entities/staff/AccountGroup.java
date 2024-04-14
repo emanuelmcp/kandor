@@ -13,15 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class AccountGroup {
+    //TODO: crear equals and hashcode
     @EmbeddedId
     private AccountGroupPK id;
 
     @ManyToOne
-    @JoinColumn(name = "uuid")
+    @JoinColumn(name = "uuid", insertable=false, updatable=false)
     Account account;
 
     @ManyToOne()
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "group_id", insertable=false, updatable=false)
     Group group;
 
     @Column(name = "expires_at", columnDefinition= "TIMESTAMP WITH TIME ZONE")

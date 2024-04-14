@@ -15,12 +15,12 @@ import io.github.com.services.interfaces.AccountPermissionService;
 import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class AccountPermissionServiceImpl implements AccountPermissionService {
-
     private final AccountRepository accountRepository;
     private final PermissionRepository permissionRepository;
     private final AccountPermissionRepository accountPermissionRepository;

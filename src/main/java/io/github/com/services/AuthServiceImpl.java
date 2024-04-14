@@ -9,12 +9,11 @@ import io.github.com.services.interfaces.AuthService;
 import io.github.com.utils.PasswordUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class AuthServiceImpl implements AuthService {
-
     private final AccountRepository accountRepository;
     private final PasswordUtils passwordUtils;
     private final AuthenticationDataDTOToAccount authMapper;
