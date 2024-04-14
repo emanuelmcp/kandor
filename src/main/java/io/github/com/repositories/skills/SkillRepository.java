@@ -1,4 +1,4 @@
-package io.github.com.repositories;
+package io.github.com.repositories.skills;
 
 import io.github.com.entities.skills.Skill;
 import org.springframework.data.mongodb.repository.MongoRepository;

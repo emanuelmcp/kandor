@@ -6,10 +6,9 @@ import io.github.com.entities.chat.ForbiddenWord;
 import io.github.com.exceptions.EntityAlreadyExistsException;
 import io.github.com.mappers.chat.ForbiddenWordDTOToForbiddenWordMapper;
 import io.github.com.mappers.chat.ListOfForbiddenWordsToListOfForbiddenWordsDTOMapper;
-import io.github.com.repositories.ForbiddenWordRepository;
+import io.github.com.repositories.chat.ForbiddenWordRepository;
 import io.github.com.services.interfaces.ForbiddenWordService;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

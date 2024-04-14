@@ -2,13 +2,12 @@ package io.github.com.services;
 
 import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.AccountDTO;
-import io.github.com.repositories.AccountRepository;
-import io.github.com.repositories.GroupRepository;
-import io.github.com.repositories.PermissionRepository;
-import io.github.com.repositories.SkillRepository;
+import io.github.com.repositories.staff.AccountRepository;
+import io.github.com.repositories.staff.GroupRepository;
+import io.github.com.repositories.staff.PermissionRepository;
+import io.github.com.repositories.skills.SkillRepository;
 import io.github.com.services.interfaces.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 public class AccountServiceImpl implements AccountService {
 	private final AccountRepository accountRepository;

@@ -11,7 +11,7 @@ import io.github.com.mappers.work.CreateSkillDTOToSkillMapper;
 import io.github.com.mappers.work.ListOfSkillsToSkillDTOMapper;
 import io.github.com.mappers.work.SkillToSkillDTOMapper;
 import io.github.com.mappers.work.UpdateSkillDTOToSkillMapper;
-import io.github.com.repositories.SkillRepository;
+import io.github.com.repositories.skills.SkillRepository;
 import io.github.com.services.interfaces.SkillService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;

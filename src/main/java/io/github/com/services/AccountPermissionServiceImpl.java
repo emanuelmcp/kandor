@@ -8,14 +8,13 @@ import io.github.com.entities.staff.AccountPermission;
 import io.github.com.entities.staff.Permission;
 import io.github.com.exceptions.EntityAlreadyExistsException;
 import io.github.com.exceptions.EntityAssociationException;
-import io.github.com.repositories.AccountPermissionRepository;
-import io.github.com.repositories.AccountRepository;
-import io.github.com.repositories.PermissionRepository;
+import io.github.com.repositories.staff.AccountPermissionRepository;
+import io.github.com.repositories.staff.AccountRepository;
+import io.github.com.repositories.staff.PermissionRepository;
 import io.github.com.services.interfaces.AccountPermissionService;
 import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 

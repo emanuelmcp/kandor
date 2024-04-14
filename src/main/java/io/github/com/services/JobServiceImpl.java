@@ -10,7 +10,7 @@ import io.github.com.mappers.work.CreateJobDTOToJobMapper;
 import io.github.com.mappers.work.JobToJobDTOMapper;
 import io.github.com.mappers.work.ListOfJobsToListOfJobsDTOMapper;
 import io.github.com.mappers.work.UpdateJobDTOToJobMapper;
-import io.github.com.repositories.JobRepository;
+import io.github.com.repositories.skills.JobRepository;
 import io.github.com.services.interfaces.JobService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;

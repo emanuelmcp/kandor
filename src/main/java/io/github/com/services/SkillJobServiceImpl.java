@@ -4,8 +4,8 @@ import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.entities.skills.Job;
 import io.github.com.entities.skills.Skill;
 import io.github.com.exceptions.EntityAssociationException;
-import io.github.com.repositories.JobRepository;
-import io.github.com.repositories.SkillRepository;
+import io.github.com.repositories.skills.JobRepository;
+import io.github.com.repositories.skills.SkillRepository;
 import io.github.com.services.interfaces.SkillJobService;
 import org.springframework.stereotype.Service;
 

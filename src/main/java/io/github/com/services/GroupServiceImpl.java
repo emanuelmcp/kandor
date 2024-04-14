@@ -14,12 +14,11 @@ import io.github.com.mappers.staff.CreateGroupDTOToGroupMapper;
 import io.github.com.mappers.staff.GroupToFullGroupDTOMapper;
 import io.github.com.mappers.staff.ListOfGroupsToListOfReducedGroupsDTOMapper;
 import io.github.com.mappers.staff.UpdateGroupDTOToGroupMapper;
-import io.github.com.repositories.GroupRepository;
+import io.github.com.repositories.staff.GroupRepository;
 import io.github.com.services.interfaces.GroupService;
 import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package io.github.com.repositories;
+package io.github.com.repositories.staff;
 
 import io.github.com.entities.staff.AccountPermission;
 import io.github.com.entities.staff.keys.AccountPermissionPK;

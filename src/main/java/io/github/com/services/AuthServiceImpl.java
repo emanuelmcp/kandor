@@ -4,12 +4,11 @@ import io.github.com.dto.auth.AuthenticationDataDTO;
 import io.github.com.dto.auth.LoginResponseDTO;
 import io.github.com.entities.staff.Account;
 import io.github.com.mappers.AuthenticationDataDTOToAccount;
-import io.github.com.repositories.AccountRepository;
+import io.github.com.repositories.staff.AccountRepository;
 import io.github.com.services.interfaces.AuthService;
 import io.github.com.utils.PasswordUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service

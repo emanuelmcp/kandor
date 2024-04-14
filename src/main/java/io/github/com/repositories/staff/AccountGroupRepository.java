@@ -1,4 +1,4 @@
-package io.github.com.repositories;
+package io.github.com.repositories.staff;
 
 import io.github.com.entities.staff.AccountGroup;
 import io.github.com.entities.staff.keys.AccountGroupPK;

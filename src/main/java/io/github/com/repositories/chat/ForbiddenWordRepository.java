@@ -1,4 +1,4 @@
-package io.github.com.repositories;
+package io.github.com.repositories.chat;
 
 import io.github.com.entities.chat.ForbiddenWord;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -12,7 +12,7 @@ import io.github.com.mappers.staff.CreatePermissionDTOToPermissionMapper;
 import io.github.com.mappers.staff.ListOfPermissionsToListOfPermissionsDTOMapper;
 import io.github.com.mappers.staff.PermissionToPermissionDTOMapper;
 import io.github.com.mappers.staff.UpdatePermissionDTOToPermissionMapper;
-import io.github.com.repositories.PermissionRepository;
+import io.github.com.repositories.staff.PermissionRepository;
 import io.github.com.services.interfaces.PermissionService;
 import jakarta.transaction.Transactional;
 import org.jetbrains.annotations.NotNull;

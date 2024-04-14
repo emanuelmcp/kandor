@@ -1,4 +1,4 @@
-package io.github.com.repositories;
+package io.github.com.repositories.staff;
 
 import io.github.com.entities.staff.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
