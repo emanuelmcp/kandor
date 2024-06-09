@@ -1,4 +1,4 @@
-package io.github.com.services;
+package io.github.com.services.staff;
 
 import io.github.com.dto.common.ApiResponseDTO;
 import io.github.com.dto.staff.PermissionRelationsMetadataDTO;

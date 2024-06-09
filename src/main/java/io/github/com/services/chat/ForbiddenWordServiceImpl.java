@@ -1,4 +1,4 @@
-package io.github.com.services;
+package io.github.com.services.chat;
 
 import io.github.com.dto.chat.ForbiddenWordDTO;
 import io.github.com.dto.common.ApiResponseDTO;
